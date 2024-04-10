@@ -1,0 +1,288 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    font-family: "Nunito", sans-serif;
+}
+
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(40,40,105,1) 49%, rgba(0,212,255,1) 100%);
+}
+
+.transparent {
+    opacity: 0.1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.main-logo {
+    padding-top: 20px;
+    width: 40%;
+    min-width: 200px;
+    margin: 0 auto;
+    /* margin-top: 10px; */
+    img {
+        width: 100%;
+        animation: logo-jump 2s ease-in-out 4s forwards;
+    }
+}
+
+.memory-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-card {
+    width: 10%;
+    min-width: 80px;
+    height: 20vh;
+    min-height: 100px;
+    background-color: transparent;
+    border-radius: 6%;
+    box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
+    position: relative;
+    border-radius: 6%;
+    perspective: 1000px;
+    display: flex;
+    align-items: center;
+
+    figure {
+        width: 100%;
+        height: 100%;
+        border-radius: 6%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .memory-card-front, .memory-card-back{
+    width: 100%;
+    height: 100%;
+    background-color: hwb(30 72% 27%);
+    border-radius: 6%;
+    position: absolute;
+
+    backface-visibility: hidden;
+    transition: transform 1.2s;
+    }
+
+    .memory-card-back{
+        
+        background-image: url("https://static.printler.com/media/photo/116800.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
+    .memory-card-front{
+        transform: rotateY(180deg);
+    }
+}
+
+.memory-card:hover {
+    cursor: pointer;
+    transform: scale(1.05) translate(-2.5px,-2.5px);
+    transition: 0.5s;
+}
+
+.memory-card.flipped .memory-card-front{
+    transform: rotateY(0deg);
+}
+
+.memory-card.flipped .memory-card-back{
+    transform: rotateY(180deg);
+}
+
+.loader {
+    width: 100%;
+    height: 100vh;
+    background: rgb(34,115,195);
+    background: radial-gradient(circle, rgba(34,115,195,1) 70%, rgba(253,187,45,1) 100%);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    animation: loader 3.5s linear forwards;
+
+    img {
+        width: 20%;
+
+        transform: scale(0);
+        animation: scaling 3s ease-in-out infinite;
+    }
+
+
+    img:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+    img:nth-child(2) {
+        animation-delay: 0.6s;
+    }
+    img:nth-child(3) {
+        animation-delay: 1s;
+    }
+}
+
+.ganaste {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: calc(100vh / 3);
+
+    img {
+        width: 90%;
+        max-width: 700px;
+        animation: logo-jump 2s ease-in-out forwards;
+    }
+
+    .reset {
+        width: 40%;
+        max-width: 200px;
+        padding-top: 1.5%;
+        background-color: rgba(221, 224, 228, 0.5);
+        border: none;
+        border-radius: 5%;
+        transform: scale(1);
+        transition: transform 0.3s ease-in-out;
+        img{
+            width: 100%;
+        }
+    }
+    .reset:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: transform 0.6s ease-in-out;
+    }
+}
+
+.game-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding-top: 50px;
+
+    .choice-buttons {
+        width: 60%;
+
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+
+        .choice {
+            width: 30%;
+            max-width: 175px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
+        }
+
+        .choice:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .play {
+        width: 40%;
+        max-width: 400px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .play:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: transform 0.6s ease-in-out;
+    }
+}
+
+@keyframes loader {
+    0%{
+        opacity: 1;
+        visibility: visible;
+    }
+    95%{
+        opacity: 0.8;
+        visibility: visible;
+    }
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ANIMACION DE POKEBALLS DE CARGA */
+
+@keyframes scaling {
+    0%, 100%{
+        transform: scale(0.2) translateY(-300px);
+    }
+    40%{
+        transform: scale(1);
+    }
+    70%{
+        transform: scale(1) ;
+    }
+    
+}
+
+/* ANIMACION LOGO */
+
+@keyframes logo-jump {
+    0%{
+        transform: scale(1);
+    }
+    30%{
+        transform: scale(1.2);
+    }
+    60%{
+        transform: scale(1) ;
+    }
+    85%{
+        transform: scale(1.2) ;
+    }
+    100%{
+        transform: scale(1) ;
+    }
+}
+
+
+@media only screen and (max-width: 611px) {
+    .main-logo {
+        
+        width: 90%;
+        
+    }
+  }
