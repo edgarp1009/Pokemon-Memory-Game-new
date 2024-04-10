@@ -33,10 +33,11 @@ body {
 }
 
 .memory-container {
-    width: 100%;
-    max-width: 1600px;
+
+    width: 350px;
+    padding-top: 100px;
+    height: 100%;
     margin: 0 auto;
-    padding: 10%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -45,10 +46,8 @@ body {
 }
 
 .memory-card {
-    width: 10%;
-    min-width: 80px;
-    height: 20vh;
-    min-height: 100px;
+    width: 70px;
+    height: 100px;
     background-color: transparent;
     border-radius: 6%;
     box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
@@ -286,3 +285,14 @@ body {
         
     }
   }
+
+@media only screen and (min-width: 886px) {
+    .memory-container {
+        width: 600px;
+    }
+    
+    .memory-card {
+        width: 120px;
+        height: 180px;
+}
+}

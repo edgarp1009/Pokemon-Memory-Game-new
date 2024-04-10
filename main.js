@@ -45,7 +45,7 @@ dificil.addEventListener("click", ()=> {
 //CONFIGURACION DEL JUEGO
 
 let firstPokemonMemory = 1;
-let lastPokemonMemory = 5;
+let lastPokemonMemory = 6;
 
 async function obtenerPokemon(first, last) { 
     for (let i = first; i <= last; i++) {
