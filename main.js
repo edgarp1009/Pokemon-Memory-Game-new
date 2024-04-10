@@ -30,22 +30,34 @@ facil.addEventListener("click", ()=> {
     normal.classList.toggle("hidden");
     dificil.classList.toggle("hidden");
     play.classList.toggle("hidden");
+    restartCards = 5;
+    startGame(lastPokemonMemoryFacil);
 });
 normal.addEventListener("click", ()=> {
     facil.classList.toggle("hidden");
     dificil.classList.toggle("hidden");
     play.classList.toggle("hidden");
+    restartCards = 8;
+    startGame(lastPokemonMemoryNormal);
 });
 dificil.addEventListener("click", ()=> {
     normal.classList.toggle("hidden");
     facil.classList.toggle("hidden");
     play.classList.toggle("hidden");
+    startGame(lastPokemonMemoryDificil)
+    restartCards = 11;
 });
 
 //CONFIGURACION DEL JUEGO
 
-let firstPokemonMemory = Math.floor(Math.random()*135) + 1;
-let lastPokemonMemory = firstPokemonMemory + 5;
+// let firstPokemonMemory = Math.floor(Math.random()*135) + 1;
+// let lastPokemonMemory = firstPokemonMemory + 5;
+
+const firstPokemonMemory = Math.floor(Math.random()*135) + 1;
+const lastPokemonMemoryFacil = firstPokemonMemory + 5;
+const lastPokemonMemoryNormal = firstPokemonMemory + 8;
+const lastPokemonMemoryDificil = firstPokemonMemory + 11;
+let restartCards = 0;
 
 
 async function obtenerPokemon(first, last) { 
@@ -84,9 +96,6 @@ function createMemoryCards(pokemon) {
     cardsToShuffle.push(memoryCard);
 }
 
-obtenerPokemon(firstPokemonMemory,lastPokemonMemory);
-obtenerPokemon(firstPokemonMemory,lastPokemonMemory);
-
 
 function shuffle (cardsToShuffle) {
 
@@ -121,6 +130,8 @@ function compareCards(data) {
             flippedCards.forEach((card) => card.classList.remove("flipped"));}, 1200);
         if(foundCardsCounter == cardsToShuffle.length){
             setTimeout(()=> {
+                let firstPokemonMemory = Math.floor(Math.random()*135) + 1;
+                const lastPokemonMemory = firstPokemonMemory + restartCards;
                 const ganaste = document.querySelector(".ganaste");
                 const toDelete = document.querySelectorAll(".memory-card");
                 ganaste.classList.remove("hidden");
@@ -140,27 +151,13 @@ function compareCards(data) {
 
     } else {
         setTimeout(() => {
-            flippedCards.forEach((card) => card.classList.remove("flipped"));}, 1200);
+            flippedCards.forEach((card) => card.classList.remove("flipped"));}, 1100);
         
     }
 };
 
 
-
-// const logo = document.querySelector(".main-logo");
-// logo.addEventListener("click", () => {
-//     shuffle(cardsToShuffle); 
-//     console.log("shuffle");
-//     const logo = document.querySelector(".main-logo");
-//     logo.classList.add("hidden");
-// });
-
-
-
-// function flippedCardsVerification () {
-//     const card = document.querySelectorAll("flipped");
-
-//     card.length = 2 ? {
-//         card.forEach((item) => flippedCards.push(item.children[0].children[0].children[0]));
-//     } : {}
-// }
+function startGame (last) {
+    obtenerPokemon(firstPokemonMemory,last);
+    obtenerPokemon(firstPokemonMemory,last);
+};
