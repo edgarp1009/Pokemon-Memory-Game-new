@@ -28,7 +28,7 @@ body {
     /* margin-top: 10px; */
     img {
         width: 100%;
-        animation: logo-jump 2s ease-in-out 4s forwards;
+        animation: logo-jump 2s ease-in-out forwards;
     }
 }
 
@@ -195,6 +195,8 @@ body {
             border-radius: 10px;
             border: none;
             box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
+            opacity: 0;
+            animation: aparecer 2s ease-in-out 2s forwards;
         }
 
         .choice:hover {
@@ -215,7 +217,7 @@ body {
         border: none;
         box-shadow: 8px 9px 19px 3px rgba(76,251,255,0.68);
         opacity: 0;
-        animation: aparecer 1s ease-in-out forwards;
+        animation: aparecer 1s ease-in-out 3.5s forwards;
 
         img {
             width: 100%;

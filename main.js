@@ -15,6 +15,7 @@ const facil = document.querySelector(".facil");
 const normal = document.querySelector(".medio");
 const dificil = document.querySelector(".dificil");
 const play = document.querySelector(".play");
+const load = document.querySelector(".loader");
 
 play.addEventListener("click", ()=> {
     shuffle(cardsToShuffle); 
@@ -32,6 +33,7 @@ facil.addEventListener("click", ()=> {
     play.classList.toggle("hidden");
     restartCards = 5;
     startGame(lastPokemonMemoryFacil);
+    load.classList.remove("hidden");
 });
 normal.addEventListener("click", ()=> {
     facil.classList.toggle("hidden");
@@ -39,6 +41,7 @@ normal.addEventListener("click", ()=> {
     play.classList.toggle("hidden");
     restartCards = 8;
     startGame(lastPokemonMemoryNormal);
+    load.classList.remove("hidden");
 });
 dificil.addEventListener("click", ()=> {
     normal.classList.toggle("hidden");
@@ -46,6 +49,7 @@ dificil.addEventListener("click", ()=> {
     play.classList.toggle("hidden");
     startGame(lastPokemonMemoryDificil)
     restartCards = 11;
+    load.classList.remove("hidden");
 });
 
 //CONFIGURACION DEL JUEGO
@@ -78,7 +82,7 @@ let cardsToShuffle = [];
 function createMemoryCards(pokemon) {
     const memoryCard = document.createElement("div");
     memoryCard.classList.add("memory-card");
-    memoryCard.addEventListener("click", () => {memoryCard.classList.toggle("flipped"); console.log("flipped")});
+    memoryCard.addEventListener("click", () => {memoryCard.classList.toggle("flipped")});
     memoryCard.addEventListener("click", flippedCardsDetector);
 
     const memoryCardFront = document.createElement("div");
@@ -115,8 +119,7 @@ let flippedCards;
 function flippedCardsDetector () {
     flippedCards = document.querySelectorAll(".flipped");
 
-    flippedCards.length == 2 ? compareCards(flippedCards) : null;
-    console.log(flippedCards.length);
+    flippedCards.length == 2 ? compareCards(flippedCards) : null
 };
 
 function compareCards(data) {
