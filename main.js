@@ -123,12 +123,17 @@ function flippedCardsDetector () {
 };
 
 function compareCards(data) {
+    const blocker = document.querySelector(".blocker");
+    blocker.classList.remove("hidden");
 
     if (flippedCards[0].children[0].children[0].children[0].alt == flippedCards[1].children[0].children[0].children[0].alt) {
         console.log ("SIII, SON IGUALES");
         foundCardsCounter += 2;
         setTimeout(() => {
-            flippedCards.forEach((card) => card.classList.add("transparent"));}, 1200)
+            blocker.classList.add("hidden")}, 2200)
+
+        setTimeout(() => {
+            flippedCards.forEach((card) => card.classList.add("transparent"));}, 1200);
         setTimeout(() => {
             flippedCards.forEach((card) => card.classList.remove("flipped"));}, 1200);
         if(foundCardsCounter == cardsToShuffle.length){
@@ -155,7 +160,8 @@ function compareCards(data) {
     } else {
         setTimeout(() => {
             flippedCards.forEach((card) => card.classList.remove("flipped"));}, 1100);
-        
+        setTimeout(() => {
+            blocker.classList.add("hidden")}, 2200)
     }
 };
 
